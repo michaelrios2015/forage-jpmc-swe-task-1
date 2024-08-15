@@ -1,0 +1,633 @@
+From e87b565e235b17b63a9a8a102d1e058795e6a6cc Mon Sep 17 00:00:00 2001
+From: michaelrios2015 <michael.rios093@gmail.com>
+Date: Fri, 9 Aug 2024 15:20:38 -0400
+Subject: [PATCH 1/2] changes made
+
+---
+ 0001-Re-add-sample-unit-test.patch |  44 +++++++++
+ __pycache__/client3.cpython-39.pyc | Bin 0 -> 1090 bytes
+ client3.py                         |  27 +++--
+ client_test.py                     |  74 +++++++++++---
+ server3.py                         | 153 +++++++++++++++--------------
+ 5 files changed, 198 insertions(+), 100 deletions(-)
+ create mode 100644 0001-Re-add-sample-unit-test.patch
+ create mode 100644 __pycache__/client3.cpython-39.pyc
+
+diff --git a/0001-Re-add-sample-unit-test.patch b/0001-Re-add-sample-unit-test.patch
+new file mode 100644
+index 0000000..140b5f0
+--- /dev/null
++++ b/0001-Re-add-sample-unit-test.patch
+@@ -0,0 +1,44 @@
++From 879221fec2b863d37d5b493f02a530a8098ef6ef Mon Sep 17 00:00:00 2001
++From: Joe Ferrer <joe@theforage.com>
++Date: Wed, 1 Mar 2023 00:11:51 +1100
++Subject: [PATCH] Re-add sample unit test
++
++---
++ client_test.py | 25 +++++++++++++++++++++++++
++ 1 file changed, 25 insertions(+)
++ create mode 100644 client_test.py
++
++diff --git a/client_test.py b/client_test.py
++new file mode 100644
++index 0000000..af2bf26
++--- /dev/null
+++++ b/client_test.py
++@@ -0,0 +1,25 @@
+++import unittest
+++from client3 import getDataPoint
+++
+++class ClientTest(unittest.TestCase):
+++  def test_getDataPoint_calculatePrice(self):
+++    quotes = [
+++      {'top_ask': {'price': 121.2, 'size': 36}, 'timestamp': '2019-02-11 22:06:30.572453', 'top_bid': {'price': 120.48, 'size': 109}, 'id': '0.109974697771', 'stock': 'ABC'},
+++      {'top_ask': {'price': 121.68, 'size': 4}, 'timestamp': '2019-02-11 22:06:30.572453', 'top_bid': {'price': 117.87, 'size': 81}, 'id': '0.109974697771', 'stock': 'DEF'}
+++    ]
+++    """ ------------ Add the assertion below ------------ """
+++
+++  def test_getDataPoint_calculatePriceBidGreaterThanAsk(self):
+++    quotes = [
+++      {'top_ask': {'price': 119.2, 'size': 36}, 'timestamp': '2019-02-11 22:06:30.572453', 'top_bid': {'price': 120.48, 'size': 109}, 'id': '0.109974697771', 'stock': 'ABC'},
+++      {'top_ask': {'price': 121.68, 'size': 4}, 'timestamp': '2019-02-11 22:06:30.572453', 'top_bid': {'price': 117.87, 'size': 81}, 'id': '0.109974697771', 'stock': 'DEF'}
+++    ]
+++    """ ------------ Add the assertion below ------------ """
+++
+++
+++  """ ------------ Add more unit tests ------------ """
+++
+++
+++
+++if __name__ == '__main__':
+++    unittest.main()
++-- 
++2.32.0.windows.1
++
+diff --git a/__pycache__/client3.cpython-39.pyc b/__pycache__/client3.cpython-39.pyc
+new file mode 100644
+index 0000000000000000000000000000000000000000..ce156583d8ae47bccff453518b2ecaccddc3b69f
+GIT binary patch
+literal 1090
+zcmYjQ&2HN`5GEx`mK`Te+azw#3-?fLz1TD<iUo?G?G|W?y#@V24@-C<Fyc5-B1;NM
+z@1kDk<UT?lz&Y*<^w3AqwWr>D>Loj*lb|Gq^TW~b<2RICUhWVaAK}xmjn)_E{5aa^
+zJV!B~aZyCkf{2Btf_gs?p$Y_3p@<Yy(FY=86{{BN79=V;3G^puLkFT6ozXq=S1p!+
+z%)1aCFV9zi&2Ipm({pl8&*^;CX>l_r;uhS*+#PWnVz@n{118qQy4Vms=)o;mdqUuj
+zYQq|=!v^$*Y=g`wC8sq;JJ7<M-YmF`?J4?}^q0OOezHIL>B!o8cYC|2GFco|#_m4e
+zdAzfIItKmz_gp>w_bmTL3CU2dM}!tbd4Xb{<1$4aHpv;a&I&e(3ODimv%vf8+7G9}
+zH0%)--6dyiN}V@lLxyPL$#1W8rN$X>SrptJ0WSd*DE_xB#$dRu_#u>_rNs=cq?L7*
+zm$r$Ft+JD*Wve<p$W;^7I?rI?OLOuyKy-cDM8l$zwjVXo>A13>UASrE2k9cejkya`
+zyNmrt^b)G?JK65wodInIqdYs3gJGrRA#5GjqioCk16vk9+j=<2iX2M&=t2Fy=^ldJ
+zLv*hkI*v7re@<aSS8;Z!UdCAFj=vhtcH+rgLt{!6#YfUr!CRzrO79XRD4g&=z;e8Q
+zUh!(kJ?vC+S*lC>K)V+0d*J;*v@SEQj03;1Sh|?lB#88lEB6a}CdP#zN=EgH-%Znz
+z%*!;L{QTN6ruaR>rRDdLv)y~<SB^LL+8={ff0FoWnAhJF?ATPLh&95iMq*{Giy}XG
+zpaGwiu_9jhB6|Jq<(oeny6;)JKDd-4NYjSp*r+DL8i&x(w282V%81rgl@?a1YABl+
+z+cJ{2VH%`rV&7pSVvo$|1h3=!t=+GyT|0b_{ZlFJ545<J>jgJYM)(*Dc(#rq;|NM9
+e&XD0uI!QYTR*|VY7c62JUquOUb}oX8IQk#G91)2C
+
+literal 0
+HcmV?d00001
+
+diff --git a/client3.py b/client3.py
+index 3fc09b7..ef74a9b 100644
+--- a/client3.py
++++ b/client3.py
+@@ -30,30 +30,39 @@ N = 500
+ 
+ 
+ def getDataPoint(quote):
+-    """ Produce all the needed values to generate a datapoint """
++    """Produce all the needed values to generate a datapoint"""
+     """ ------------- Update this function ------------- """
+-    stock = quote['stock']
+-    bid_price = float(quote['top_bid']['price'])
+-    ask_price = float(quote['top_ask']['price'])
+-    price = bid_price
++    stock = quote["stock"]
++    bid_price = float(quote["top_bid"]["price"])
++    ask_price = float(quote["top_ask"]["price"])
++    price = (bid_price + ask_price) / 2
+     return stock, bid_price, ask_price, price
+ 
+ 
+ def getRatio(price_a, price_b):
+-    """ Get ratio of price_a and price_b """
++    """Get ratio of price_a and price_b"""
+     """ ------------- Update this function ------------- """
+-    return 1
++    if price_b == 0:
++        return
++    return price_a / price_b
+ 
+ 
+ # Main
+ if __name__ == "__main__":
+     # Query the price once every N seconds.
+     for _ in iter(range(N)):
+-        quotes = json.loads(urllib.request.urlopen(QUERY.format(random.random())).read())
++        quotes = json.loads(
++            urllib.request.urlopen(QUERY.format(random.random())).read()
++        )
+ 
+         """ ----------- Update to get the ratio --------------- """
++        prices = {}
+         for quote in quotes:
+             stock, bid_price, ask_price, price = getDataPoint(quote)
+-            print("Quoted %s at (bid:%s, ask:%s, price:%s)" % (stock, bid_price, ask_price, price))
++            prices[stock] = price
++            print(
++                "Quoted %s at (bid:%s, ask:%s, price:%s)"
++                % (stock, bid_price, ask_price, price)
++            )
+ 
+         print("Ratio %s" % getRatio(price, price))
+diff --git a/client_test.py b/client_test.py
+index af2bf26..8c8ace8 100644
+--- a/client_test.py
++++ b/client_test.py
+@@ -1,25 +1,69 @@
+ import unittest
+ from client3 import getDataPoint
+ 
+-class ClientTest(unittest.TestCase):
+-  def test_getDataPoint_calculatePrice(self):
+-    quotes = [
+-      {'top_ask': {'price': 121.2, 'size': 36}, 'timestamp': '2019-02-11 22:06:30.572453', 'top_bid': {'price': 120.48, 'size': 109}, 'id': '0.109974697771', 'stock': 'ABC'},
+-      {'top_ask': {'price': 121.68, 'size': 4}, 'timestamp': '2019-02-11 22:06:30.572453', 'top_bid': {'price': 117.87, 'size': 81}, 'id': '0.109974697771', 'stock': 'DEF'}
+-    ]
+-    """ ------------ Add the assertion below ------------ """
+ 
+-  def test_getDataPoint_calculatePriceBidGreaterThanAsk(self):
+-    quotes = [
+-      {'top_ask': {'price': 119.2, 'size': 36}, 'timestamp': '2019-02-11 22:06:30.572453', 'top_bid': {'price': 120.48, 'size': 109}, 'id': '0.109974697771', 'stock': 'ABC'},
+-      {'top_ask': {'price': 121.68, 'size': 4}, 'timestamp': '2019-02-11 22:06:30.572453', 'top_bid': {'price': 117.87, 'size': 81}, 'id': '0.109974697771', 'stock': 'DEF'}
+-    ]
+-    """ ------------ Add the assertion below ------------ """
++class ClientTest(unittest.TestCase):
++    def test_getDataPoint_calculatePrice(self):
++        quotes = [
++            {
++                "top_ask": {"price": 121.2, "size": 36},
++                "timestamp": "2019-02-11 22:06:30.572453",
++                "top_bid": {"price": 120.48, "size": 109},
++                "id": "0.109974697771",
++                "stock": "ABC",
++            },
++            {
++                "top_ask": {"price": 121.68, "size": 4},
++                "timestamp": "2019-02-11 22:06:30.572453",
++                "top_bid": {"price": 117.87, "size": 81},
++                "id": "0.109974697771",
++                "stock": "DEF",
++            },
++        ]
++        """ ------------ Add the assertion below ------------ """
+ 
++        for quote in quotes:
++            self.assertEqual(
++                getDataPoint(quote),
++                (
++                    quote["stock"],
++                    quote["top_bid"]["price"],
++                    quote["top_ask"]["price"],
++                    (quote["top_bid"]["price"] + quote["top_ask"]["price"]) / 2,
++                ),
++            )
+ 
+-  """ ------------ Add more unit tests ------------ """
++    def test_getDataPoint_calculatePriceBidGreaterThanAsk(self):
++        quotes = [
++            {
++                "top_ask": {"price": 119.2, "size": 36},
++                "timestamp": "2019-02-11 22:06:30.572453",
++                "top_bid": {"price": 120.48, "size": 109},
++                "id": "0.109974697771",
++                "stock": "ABC",
++            },
++            {
++                "top_ask": {"price": 121.68, "size": 4},
++                "timestamp": "2019-02-11 22:06:30.572453",
++                "top_bid": {"price": 117.87, "size": 81},
++                "id": "0.109974697771",
++                "stock": "DEF",
++            },
++        ]
++        """ ------------ Add the assertion below ------------ """
++        for quote in quotes:
++            self.assertEqual(
++                getDataPoint(quote),
++                (
++                    quote["stock"],
++                    quote["top_bid"]["price"],
++                    quote["top_ask"]["price"],
++                    (quote["top_bid"]["price"] + quote["top_ask"]["price"]) / 2,
++                ),
++            )
+ 
++    """ ------------ Add more unit tests ------------ """
+ 
+ 
+-if __name__ == '__main__':
++if __name__ == "__main__":
+     unittest.main()
+diff --git a/server3.py b/server3.py
+index 1836de2..8a46bba 100644
+--- a/server3.py
++++ b/server3.py
+@@ -19,6 +19,7 @@
+ #  DEALINGS IN THE SOFTWARE.
+ 
+ import csv
++
+ # from BaseHTTPServer import BaseHTTPRequestHandler,HTTPServer
+ import http.server
+ import json
+@@ -27,10 +28,14 @@ import os.path
+ import re
+ import threading
+ from datetime import timedelta, datetime
++
+ # from itertools import izip
+ from random import normalvariate, random
+ from socketserver import ThreadingMixIn
+ 
++# import dateutil
++# from dateutil.parser import *
++
+ import dateutil.parser
+ 
+ ################################################################################
+@@ -58,8 +63,9 @@ OVERLAP = 4
+ #
+ # Test Data
+ 
++
+ def bwalk(min, max, std):
+-    """ Generates a bounded random walk. """
++    """Generates a bounded random walk."""
+     rng = max - min
+     while True:
+         max += normalvariate(0, std)
+@@ -67,8 +73,8 @@ def bwalk(min, max, std):
+ 
+ 
+ def market(t0=MARKET_OPEN):
+-    """ Generates a random series of market conditions,
+-        (time, price, spread).
++    """Generates a random series of market conditions,
++    (time, price, spread).
+     """
+     for hours, px, spd in zip(bwalk(*FREQ), bwalk(*PX), bwalk(*SPD)):
+         yield t0, px, spd
+@@ -76,12 +82,12 @@ def market(t0=MARKET_OPEN):
+ 
+ 
+ def orders(hist):
+-    """ Generates a random set of limit orders (time, side, price, size) from
+-        a series of market conditions.
++    """Generates a random set of limit orders (time, side, price, size) from
++    a series of market conditions.
+     """
+     for t, px, spd in hist:
+-        stock = 'ABC' if random() > 0.5 else 'DEF'
+-        side, d = ('sell', 2) if random() > 0.5 else ('buy', -2)
++        stock = "ABC" if random() > 0.5 else "DEF"
++        side, d = ("sell", 2) if random() > 0.5 else ("buy", -2)
+         order = round(normalvariate(px + (spd / d), spd / OVERLAP), 2)
+         size = int(abs(normalvariate(0, 100)))
+         yield t, stock, side, order, size
+@@ -91,8 +97,9 @@ def orders(hist):
+ #
+ # Order Book
+ 
++
+ def add_book(book, order, size, _age=10):
+-    """ Add a new order and size to a book, and age the rest of the book. """
++    """Add a new order and size to a book, and age the rest of the book."""
+     yield order, size, _age
+     for o, s, age in book:
+         if age > 0:
+@@ -100,9 +107,9 @@ def add_book(book, order, size, _age=10):
+ 
+ 
+ def clear_order(order, size, book, op=operator.ge, _notional=0):
+-    """ Try to clear a sized order against a book, returning a tuple of
+-        (notional, new_book) if successful, and None if not.  _notional is a
+-        recursive accumulator and should not be provided by the caller.
++    """Try to clear a sized order against a book, returning a tuple of
++    (notional, new_book) if successful, and None if not.  _notional is a
++    recursive accumulator and should not be provided by the caller.
+     """
+     (top_order, top_size, age), tail = book[0], book[1:]
+     if op(order, top_order):
+@@ -115,8 +122,8 @@ def clear_order(order, size, book, op=operator.ge, _notional=0):
+ 
+ 
+ def clear_book(buy=None, sell=None):
+-    """ Clears all crossed orders from a buy and sell book, returning the new
+-        books uncrossed.
++    """Clears all crossed orders from a buy and sell book, returning the new
++    books uncrossed.
+     """
+     while buy and sell:
+         order, size, _ = buy[0]
+@@ -130,14 +137,14 @@ def clear_book(buy=None, sell=None):
+ 
+ 
+ def order_book(orders, book, stock_name):
+-    """ Generates a series of order books from a series of orders.  Order books
+-        are mutable lists, and mutating them during generation will affect the
+-        next turn!
++    """Generates a series of order books from a series of orders.  Order books
++    are mutable lists, and mutating them during generation will affect the
++    next turn!
+     """
+     for t, stock, side, order, size in orders:
+         if stock_name == stock:
+             new = add_book(book.get(side, []), order, size)
+-            book[side] = sorted(new, reverse=side == 'buy', key=lambda x: x[0])
++            book[side] = sorted(new, reverse=side == "buy", key=lambda x: x[0])
+         bids, asks = clear_book(**book)
+         yield t, bids, asks
+ 
+@@ -146,9 +153,10 @@ def order_book(orders, book, stock_name):
+ #
+ # Test Data Persistence
+ 
++
+ def generate_csv():
+-    """ Generate a CSV of order history. """
+-    with open('test.csv', 'wb') as f:
++    """Generate a CSV of order history."""
++    with open("test.csv", "wb") as f:
+         writer = csv.writer(f)
+         for t, stock, side, order, size in orders(market()):
+             if t > MARKET_OPEN + SIM_LENGTH:
+@@ -157,8 +165,8 @@ def generate_csv():
+ 
+ 
+ def read_csv():
+-    """ Read a CSV or order history into a list. """
+-    with open('test.csv', 'rt') as f:
++    """Read a CSV or order history into a list."""
++    with open("test.csv", "rt") as f:
+         for time, stock, side, order, size in csv.reader(f):
+             yield dateutil.parser.parse(time), stock, side, float(order), int(size)
+ 
+@@ -167,58 +175,60 @@ def read_csv():
+ #
+ # Server
+ 
++
+ class ThreadedHTTPServer(ThreadingMixIn, http.server.HTTPServer):
+-    """ Boilerplate class for a multithreaded HTTP Server, with working
+-        shutdown.
++    """Boilerplate class for a multithreaded HTTP Server, with working
++    shutdown.
+     """
++
+     allow_reuse_address = True
+ 
+     def shutdown(self):
+-        """ Override MRO to shutdown properly. """
++        """Override MRO to shutdown properly."""
+         self.socket.close()
+         http.server.HTTPServer.shutdown(self)
+ 
+ 
+ def route(path):
+-    """ Decorator for a simple bottle-like web framework.  Routes path to the
+-        decorated method, with the rest of the path as an argument.
++    """Decorator for a simple bottle-like web framework.  Routes path to the
++    decorated method, with the rest of the path as an argument.
+     """
+ 
+     def _route(f):
+-        setattr(f, '__route__', path)
++        setattr(f, "__route__", path)
+         return f
+ 
+     return _route
+ 
+ 
+ def read_params(path):
+-    """ Read query parameters into a dictionary if they are parseable,
+-        otherwise returns None.
++    """Read query parameters into a dictionary if they are parseable,
++    otherwise returns None.
+     """
+-    query = path.split('?')
++    query = path.split("?")
+     if len(query) > 1:
+-        query = query[1].split('&')
+-        return dict(map(lambda x: x.split('='), query))
++        query = query[1].split("&")
++        return dict(map(lambda x: x.split("="), query))
+ 
+ 
+ def get(req_handler, routes):
+-    """ Map a request to the appropriate route of a routes instance. """
++    """Map a request to the appropriate route of a routes instance."""
+     for name, handler in routes.__class__.__dict__.items():
+         if hasattr(handler, "__route__"):
+             if None != re.search(handler.__route__, req_handler.path):
+                 req_handler.send_response(200)
+-                req_handler.send_header('Content-Type', 'application/json')
+-                req_handler.send_header('Access-Control-Allow-Origin', '*')
++                req_handler.send_header("Content-Type", "application/json")
++                req_handler.send_header("Access-Control-Allow-Origin", "*")
+                 req_handler.end_headers()
+                 params = read_params(req_handler.path)
+-                data = json.dumps(handler(routes, params)) + '\n'
+-                req_handler.wfile.write(bytes(data, encoding='utf-8'))
++                data = json.dumps(handler(routes, params)) + "\n"
++                req_handler.wfile.write(bytes(data, encoding="utf-8"))
+                 return
+ 
+ 
+-def run(routes, host='0.0.0.0', port=8080):
+-    """ Runs a class as a server whose methods have been decorated with
+-        @route.
++def run(routes, host="0.0.0.0", port=8080):
++    """Runs a class as a server whose methods have been decorated with
++    @route.
+     """
+ 
+     class RequestHandler(http.server.BaseHTTPRequestHandler):
+@@ -232,9 +242,10 @@ def run(routes, host='0.0.0.0', port=8080):
+     thread = threading.Thread(target=server.serve_forever)
+     thread.daemon = True
+     thread.start()
+-    print('HTTP server started on port 8080')
++    print("HTTP server started on port 8080")
+     while True:
+         from time import sleep
++
+         sleep(1)
+     server.shutdown()
+     server.start()
+@@ -246,19 +257,19 @@ def run(routes, host='0.0.0.0', port=8080):
+ # App
+ 
+ ops = {
+-    'buy': operator.le,
+-    'sell': operator.ge,
++    "buy": operator.le,
++    "sell": operator.ge,
+ }
+ 
+ 
+ class App(object):
+-    """ The trading game server application. """
++    """The trading game server application."""
+ 
+     def __init__(self):
+         self._book_1 = dict()
+         self._book_2 = dict()
+-        self._data_1 = order_book(read_csv(), self._book_1, 'ABC')
+-        self._data_2 = order_book(read_csv(), self._book_2, 'DEF')
++        self._data_1 = order_book(read_csv(), self._book_1, "ABC")
++        self._data_2 = order_book(read_csv(), self._book_2, "DEF")
+         self._rt_start = datetime.now()
+         self._sim_start, _, _ = next(self._data_1)
+         self.read_10_first_lines()
+@@ -286,10 +297,10 @@ class App(object):
+             next(self._data_1)
+             next(self._data_2)
+ 
+-    @route('/query')
++    @route("/query")
+     def handle_query(self, x):
+-        """ Takes no arguments, and yields the current top of the book;  the
+-            best bid and ask and their sizes
++        """Takes no arguments, and yields the current top of the book;  the
++        best bid and ask and their sizes
+         """
+         try:
+             t1, bids1, asks1 = next(self._current_book_1)
+@@ -300,41 +311,31 @@ class App(object):
+             t1, bids1, asks1 = next(self._current_book_1)
+             t2, bids2, asks2 = next(self._current_book_2)
+         t = t1 if t1 > t2 else t2
+-        print('Query received @ t%s' % t)
+-        return [{
+-            'id': x and x.get('id', None),
+-            'stock': 'ABC',
+-            'timestamp': str(t),
+-            'top_bid': bids1 and {
+-                'price': bids1[0][0],
+-                'size': bids1[0][1]
++        print("Query received @ t%s" % t)
++        return [
++            {
++                "id": x and x.get("id", None),
++                "stock": "ABC",
++                "timestamp": str(t),
++                "top_bid": bids1 and {"price": bids1[0][0], "size": bids1[0][1]},
++                "top_ask": asks1 and {"price": asks1[0][0], "size": asks1[0][1]},
+             },
+-            'top_ask': asks1 and {
+-                'price': asks1[0][0],
+-                'size': asks1[0][1]
+-            }
+-        },
+             {
+-                'id': x and x.get('id', None),
+-                'stock': 'DEF',
+-                'timestamp': str(t),
+-                'top_bid': bids2 and {
+-                    'price': bids2[0][0],
+-                    'size': bids2[0][1]
+-                },
+-                'top_ask': asks2 and {
+-                    'price': asks2[0][0],
+-                    'size': asks2[0][1]
+-                }
+-            }]
++                "id": x and x.get("id", None),
++                "stock": "DEF",
++                "timestamp": str(t),
++                "top_bid": bids2 and {"price": bids2[0][0], "size": bids2[0][1]},
++                "top_ask": asks2 and {"price": asks2[0][0], "size": asks2[0][1]},
++            },
++        ]
+ 
+ 
+ ################################################################################
+ #
+ # Main
+ 
+-if __name__ == '__main__':
+-    if not os.path.isfile('test.csv'):
++if __name__ == "__main__":
++    if not os.path.isfile("test.csv"):
+         print("No data found, generating...")
+         generate_csv()
+     run(App())
+-- 
+2.32.0.windows.1
+
+
+From 0931851ca8718d9923566d7686faaed4d7cd5c3f Mon Sep 17 00:00:00 2001
+From: Michael Rios <michael.rios093@gmail.com>
+Date: Thu, 15 Aug 2024 10:31:09 -0400
+Subject: [PATCH 2/2] Delete 0001-Re-add-sample-unit-test.patch
+
+deleted patch
+---
+ 0001-Re-add-sample-unit-test.patch | 44 ------------------------------
+ 1 file changed, 44 deletions(-)
+ delete mode 100644 0001-Re-add-sample-unit-test.patch
+
+diff --git a/0001-Re-add-sample-unit-test.patch b/0001-Re-add-sample-unit-test.patch
+deleted file mode 100644
+index 140b5f0..0000000
+--- a/0001-Re-add-sample-unit-test.patch
++++ /dev/null
+@@ -1,44 +0,0 @@
+-From 879221fec2b863d37d5b493f02a530a8098ef6ef Mon Sep 17 00:00:00 2001
+-From: Joe Ferrer <joe@theforage.com>
+-Date: Wed, 1 Mar 2023 00:11:51 +1100
+-Subject: [PATCH] Re-add sample unit test
+-
+----
+- client_test.py | 25 +++++++++++++++++++++++++
+- 1 file changed, 25 insertions(+)
+- create mode 100644 client_test.py
+-
+-diff --git a/client_test.py b/client_test.py
+-new file mode 100644
+-index 0000000..af2bf26
+---- /dev/null
+-+++ b/client_test.py
+-@@ -0,0 +1,25 @@
+-+import unittest
+-+from client3 import getDataPoint
+-+
+-+class ClientTest(unittest.TestCase):
+-+  def test_getDataPoint_calculatePrice(self):
+-+    quotes = [
+-+      {'top_ask': {'price': 121.2, 'size': 36}, 'timestamp': '2019-02-11 22:06:30.572453', 'top_bid': {'price': 120.48, 'size': 109}, 'id': '0.109974697771', 'stock': 'ABC'},
+-+      {'top_ask': {'price': 121.68, 'size': 4}, 'timestamp': '2019-02-11 22:06:30.572453', 'top_bid': {'price': 117.87, 'size': 81}, 'id': '0.109974697771', 'stock': 'DEF'}
+-+    ]
+-+    """ ------------ Add the assertion below ------------ """
+-+
+-+  def test_getDataPoint_calculatePriceBidGreaterThanAsk(self):
+-+    quotes = [
+-+      {'top_ask': {'price': 119.2, 'size': 36}, 'timestamp': '2019-02-11 22:06:30.572453', 'top_bid': {'price': 120.48, 'size': 109}, 'id': '0.109974697771', 'stock': 'ABC'},
+-+      {'top_ask': {'price': 121.68, 'size': 4}, 'timestamp': '2019-02-11 22:06:30.572453', 'top_bid': {'price': 117.87, 'size': 81}, 'id': '0.109974697771', 'stock': 'DEF'}
+-+    ]
+-+    """ ------------ Add the assertion below ------------ """
+-+
+-+
+-+  """ ------------ Add more unit tests ------------ """
+-+
+-+
+-+
+-+if __name__ == '__main__':
+-+    unittest.main()
+--- 
+-2.32.0.windows.1
+-
+-- 
+2.32.0.windows.1
+
